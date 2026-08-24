@@ -10,10 +10,12 @@ then commit and push this file as part of the `week01-setup` branch / PR.
 
 ```
 $ python --version
-(paste output here)
+3.11 python version
 
 $ python hello_env.py
-(paste output here)
+assume that this is the one
+
+$ ssh key is missing.
 ```
 
 ## Reflection (second PR)
