@@ -7,6 +7,7 @@ whether a loan applicant will default.
 This script has NOT been checked for train/test leakage yet.
 That's today's lab.
 """
+import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -14,7 +15,11 @@ from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
-DATA_PATH = "loan_applications.csv"
+# Resolve the CSV relative to this script's own location, not the caller's
+# working directory -- so this runs the same whether you launch it from the
+# repo root (python labs/week04-preprocessing/train.py) or from inside this
+# folder (python train.py).
+DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "loan_applications.csv")
 NUMERIC_FEATURES = ["age", "annual_income", "months_employed", "loan_amount", "account_balance"]
 CATEGORICAL_FEATURES = ["employment_type", "home_ownership"]
 
