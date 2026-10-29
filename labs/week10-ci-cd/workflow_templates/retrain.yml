@@ -3,6 +3,9 @@ name: retrain
 # YOUR CODE (gap 1): run when a pull request adds or changes files under labs/week10-testing-ci/data/incoming/,
 # and also allow a manual run (`workflow_dispatch:`).
 on:
+  pull_requet:
+    paths:
+      - "labs/week10-ci-cd/data/incoming/**"
   workflow_dispatch:
 
 jobs:
