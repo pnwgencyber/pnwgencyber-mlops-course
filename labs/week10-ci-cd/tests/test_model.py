@@ -17,14 +17,20 @@ def test_model_beats_the_floor_and_the_baseline(model, data):
     X_train, X_test, y_train, y_test = data
     auc = roc_auc_score(y_test, model.predict_proba(X_test)[:, 1])
     # YOUR CODE: fit a baseline LogisticRegression on distance_km only (X_train[["distance_km"]]),
+    cols = ["distance_km"]
+    baseline = LogisticRegression().fit(X_train[cols], y_train)
+    base_auc = roc_auc_score(y_test, baseline.predict_proba(X_test[cols])[:,1])
     # compute its AUC on X_test[["distance_km"]], then assert:
+    assert auc >= AUC_FLOOR
+    assert auc >= base_auc + MARGIN
     #   (1) auc >= AUC_FLOOR     (2) auc >= baseline AUC + MARGIN
-    raise NotImplementedError
+    #raise NotImplementedError
 
 
 def test_rain_raises_the_risk(model):
     # YOUR CODE: assert that the same order has a higher late risk when raining=1 than when raining=0
-    raise NotImplementedError
+    assert risk(model, raining=1) > risk(model, raining=0)
+    #raise NotImplementedError
 
 
 def test_probabilities_are_valid(model, data):
