@@ -7,7 +7,7 @@ on:
     paths:
       - "labs/week10-ci-cd/**"
   push:
-    path:
+    paths:
       - "labs/week10-ci-cd/**"
 
 jobs:
